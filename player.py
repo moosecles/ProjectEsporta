@@ -15,3 +15,7 @@ class Player:
         self.total_points += 1 * self.multiplier
         # return self.total_points
 
+    def upgrade_multiplier(self):  # Function to return the multiplier we are adding per second
+        return (self.yoga_mats * 1) + (self.punching_bag * 10)
+
+
