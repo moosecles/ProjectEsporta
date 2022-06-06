@@ -7,7 +7,7 @@ dbrackCount = 0
 dumbbells = 0
 squatRackCount= 0
 
-def totalMultiplier():
+def totalMultiplier(): # Function to return the multiplier we are adding per second
     return (yogaMatCount * 1) + (punchingBagCount * 10)
 
 def yoga_upgrade():
