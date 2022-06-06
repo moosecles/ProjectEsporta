@@ -25,16 +25,16 @@ def show_score (x, y):
     screen.blit(score, (testX, testY))
 
 # Loading images, mp3 (venv/props/)
-gym_bg = pygame.image.load("map.png")
-punching_bag = pygame.image.load("yoga_mat.png")
-deadlift = pygame.image.load("deadlift.png")
-db_rack = pygame.image.load("db_rack.png")
-bench_press = pygame.image.load("bench_press.png")
-tread_mill = pygame.image.load("tread_mill.png")
-click_sound = mixer.Sound('Click.mp3')
+gym_bg = pygame.image.load("venv/props/map.png")
+punching_bag = pygame.image.load("venv/props/yoga_mat.png")
+deadlift = pygame.image.load("venv/props/deadlift.png")
+db_rack = pygame.image.load("venv/props/db_rack.png")
+bench_press = pygame.image.load("venv/props/bench_press.png")
+tread_mill = pygame.image.load("venv/props/tread_mill.png")
+click_sound = mixer.Sound('venv/props/Click.mp3')
 
 
-icon = pygame.image.load("logo.png")
+icon = pygame.image.load("venv/props/logo.png")
 pygame.display.set_icon(icon)
 
 
