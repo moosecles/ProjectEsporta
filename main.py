@@ -18,6 +18,9 @@ tread_mill = pygame.image.load("tread_mill.png")
 # pygame.display.set_icon(icon)
 
 
+#GLOBAL VARIABLES
+total_points = 0
+
 
 # Game Running
 running = True
@@ -33,6 +36,13 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    # Points System
+    def tickingClock(total_points):
+        total_points += 1
+    pygame.time.set_timer(tickingClock(total_points), 1000)  # periodically do this.
+    print(str(total_points))
+
 pygame.quit()
 
 
