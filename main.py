@@ -38,10 +38,13 @@ while running:
             running = False
 
     # Points System
-    #ef tickingClock(total_points):
-        #total_points += 1
-    pygame.time.set_timer(pygame.USEREVENT+1, 1000)  # (do this, every this milliseconds)
-    print(str(total_points))
+    timer_event = pygame.USEREVENT + 1
+    pygame.time.set_timer(timer_event, 1000)  # (do this, every this milliseconds)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == timer_event:
+            total_points += 1
 
 pygame.quit()
 
