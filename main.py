@@ -52,7 +52,7 @@ while running:
 
     # Upgrade Buttons
     screen.blit(punching_bag, (850, 60))
-
+    area = pygame.Rect(0, 0, 775, 540)
     # Event List
     for event in pygame.event.get():
         clock.tick(60)
@@ -61,7 +61,8 @@ while running:
         elif event.type == timer_event:
             total_points += upgrade.upgradeMultiply()
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
+            pos = pygame.mouse.get_pos()
+            if event.button == 1 and area.collidepoint(pos):
                 total_points += 1
 
 
