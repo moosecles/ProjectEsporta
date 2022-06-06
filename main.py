@@ -47,7 +47,6 @@ class Player():
     def __init__(self):
         self.total_points = 0
 
-
 player = Player()
 
 
