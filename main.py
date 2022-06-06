@@ -40,7 +40,7 @@ while running:
         elif event.type == timer_event:
             total_points += 1
             print(str(total_points))
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN:
             total_points += 1
             print(total_points)
 
