@@ -1,7 +1,6 @@
 import pygame
 from pygame import mixer
-import upgrade
-import os
+from player import Player
 
 pygame.font.init()
 pygame.init()
@@ -16,13 +15,8 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 # GYM BG AREA
 area = pygame.Rect(100, 150, 200, 124)
 
-testX = 750
-testY = 500
-
-
-def show_score (x, y):
-    score = font.render('Points : %s' % str(total_points), True, (255, 255, 255))
-    screen.blit(score, (testX, testY))
+scoreX = 750
+scoreY = 500
 
 # Loading images, mp3 (venv/props/)
 gym_bg = pygame.image.load("props/map.png")
@@ -33,24 +27,15 @@ bench_press = pygame.image.load("props/bench_press.png")
 tread_mill = pygame.image.load("props/tread_mill.png")
 click_sound = mixer.Sound('props/Click.mp3')
 
-
 icon = pygame.image.load("props/logo.png")
 pygame.display.set_icon(icon)
 
-
-#GLOBAL VARIABLES
-total_points = 0
+# GLOBAL VARIABLES
 timer_event = pygame.USEREVENT + 1
 pygame.time.set_timer(timer_event, 1000)  # (do this, every this milliseconds)
 clock = pygame.time.Clock()
 
-
 # Game Running
-
-class Player():
-    def __init__(self):
-        self.total_points = 0
-        self.multiplier = 3
 
 player = Player()
 
@@ -59,15 +44,12 @@ def show_score(x, y):
     score = font.render('Points : %s' % str(player.total_points), True, (255, 255, 255))
     screen.blit(score, (testX, testY))
 
-
 # Game Running
 running = True
-
-
 while running:
     pygame.display.update()
-    # Background Image
 
+    # Background Image
     screen.blit(gym_bg, (0, 0))
 
     # Upgrade Buttons
@@ -79,16 +61,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # elif event.type == timer_event:
-            # player.total_points += 1
+        # player.total_points += 1
+
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
+
             if event.button == 1 and area.collidepoint(pos):
                 click_sound.play()
-                player.total_points += 1 * player.multiplier
+                player.add_score()
 
-    show_score(testX, testY)
+    show_score(scoreX, scoreY)
 pygame.quit()
-
-
-
-
