@@ -1,8 +1,10 @@
 import pygame
+from pygame import mixer
 import upgrade
 import os
 
 pygame.font.init()
+pygame.init()
 background_colour = (255, 255, 255)
 (width, height) = (960, 540)
 screen = pygame.display.set_mode((width, height))
@@ -22,13 +24,15 @@ def show_score (x, y):
     score = font.render('Points : %s' % str(total_points), True, (255, 255, 255))
     screen.blit(score, (testX, testY))
 
-# Loading images (venv/props/)
+# Loading images, mp3 (venv/props/)
 gym_bg = pygame.image.load("map.png")
 punching_bag = pygame.image.load("yoga_mat.png")
 deadlift = pygame.image.load("deadlift.png")
 db_rack = pygame.image.load("db_rack.png")
 bench_press = pygame.image.load("bench_press.png")
 tread_mill = pygame.image.load("tread_mill.png")
+click_sound = mixer.Sound('Click.mp3')
+
 
 icon = pygame.image.load("logo.png")
 pygame.display.set_icon(icon)
@@ -79,6 +83,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if event.button == 1 and area.collidepoint(pos):
+                click_sound.play()
                 player.total_points += 1 * player.multiplier
 
     show_score(testX, testY)
