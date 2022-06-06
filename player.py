@@ -1,8 +1,8 @@
 
 class Player:
     def __init__(self):
-        self.total_points = 0
-        self.multiplier = 3
+        self.total_points = 100
+        self.multiplier = 5
         self.yoga_mats = 0
         self.punching_bag = 0
         self.treadmills = 0

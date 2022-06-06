@@ -1,12 +1,14 @@
 # GLOBAL VARIABLES
-yoga_mats = 0
-punching_bag = 0
+yogaMatCount = 0
+punchingBagCount = 0
 treadmills = 0
-dead_lift = 0
-db_rack = 0
+deadliftCount = 0
+dbrackCount = 0
 dumbbells = 0
-squat_rack = 0
+squatRackCount= 0
 
+def totalMultiplier():
+    return (yogaMatCount * 1) + (punchingBagCount * 10)
 
 def yoga_upgrade():
     pass
