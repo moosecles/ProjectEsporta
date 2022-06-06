@@ -11,6 +11,9 @@ pygame.display.set_caption('Project Esporta')
 # FONT
 font = pygame.font.Font('freesansbold.ttf', 32)
 
+# GYM BG AREA
+area = pygame.Rect(100, 150, 200, 124)
+
 testX = 750
 testY = 500
 
@@ -21,7 +24,7 @@ def show_score (x, y):
 
 # Loading images (venv/props/)
 gym_bg = pygame.image.load("map.png")
-yoga_mat = pygame.image.load("yoga_mat.png")
+punching_bag = pygame.image.load("yoga_mat.png")
 deadlift = pygame.image.load("deadlift.png")
 db_rack = pygame.image.load("db_rack.png")
 bench_press = pygame.image.load("bench_press.png")
@@ -44,7 +47,11 @@ running = True
 while running:
     pygame.display.update()
     # Background Image
+
     screen.blit(gym_bg, (0, 0))
+
+    # Upgrade Buttons
+    screen.blit(punching_bag, (850, 60))
 
     # Event List
     for event in pygame.event.get():
