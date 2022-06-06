@@ -54,8 +54,16 @@ while running:
         elif event.type == timer_event:
             total_points += upgrade.upgradeMultiply()
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            total_points += 1
-            print(total_points)
+            if event.button == 1:
+                total_points += 1
+
+
+
+
+
+
+
+
     show_score(testX, testY)
 pygame.quit()
 
