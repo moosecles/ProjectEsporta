@@ -1,7 +1,6 @@
 import pygame
 from pygame import mixer
 from player import Player
-import upgrade
 
 pygame.font.init()
 pygame.init()
@@ -47,6 +46,8 @@ def showScore():
     screen.blit(score, (scoreX, scoreY))
 
 
+
+
 # Game Running
 
 player = Player()
@@ -63,13 +64,10 @@ while running:
 
     for event in pygame.event.get():
         clock.tick(60)
-
         if event.type == pygame.QUIT:
             running = False
-
         elif event.type == timer_event:
             player.total_points += player.upgrade_multiplier()
-
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             x, y = event.pos  # This is where the mouse is clicked if u want a X Y
@@ -77,7 +75,6 @@ while running:
             if event.button == 1 and area.collidepoint(pos):
                 click_sound.play()
                 player.add_score()
-
             elif event.button == 1 and punchingbagMask.get_at(
                     (event.pos[0] - x, event.pos[1] - y)):  # If it is at the punching bag png location
 
