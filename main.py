@@ -38,9 +38,9 @@ while running:
             running = False
 
     # Points System
-    def tickingClock(total_points):
-        total_points += 1
-    pygame.time.set_timer(tickingClock(total_points), 1000)  # periodically do this.
+    #ef tickingClock(total_points):
+        #total_points += 1
+    pygame.time.set_timer(pygame.USEREVENT+1, 1000)  # (do this, every this milliseconds)
     print(str(total_points))
 
 pygame.quit()
