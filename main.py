@@ -1,10 +1,22 @@
 import pygame
 import os
 
+pygame.font.init()
 background_colour = (255, 255, 255)
 (width, height) = (960, 540)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Project Esporta')
+
+# FONT
+font = pygame.font.Font('freesansbold.ttf', 32)
+
+testX = 10
+testY = 10
+
+
+def show_score (x, y):
+    score = font.render('Clicks : %s' % str(total_points), True, (255, 255, 255))
+    screen.blit(score, (x, y))
 
 # Loading images (venv/props/)
 gym_bg = pygame.image.load("gym_background.png")
@@ -27,6 +39,7 @@ clock = pygame.time.Clock()
 # Game Running
 running = True
 
+
 while running:
     pygame.display.update()
     # Background Image
@@ -40,10 +53,10 @@ while running:
         elif event.type == timer_event:
             total_points += 1
             print(str(total_points))
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEBUTTONDOWN:
             total_points += 1
             print(total_points)
-
+    show_score(testX, testY)
 pygame.quit()
 
 
