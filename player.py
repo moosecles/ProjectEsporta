@@ -14,3 +14,4 @@ class Player:
     def add_score(self):
         self.total_points += 1 * self.multiplier
         # return self.total_points
+
