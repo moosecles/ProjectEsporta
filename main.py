@@ -1,4 +1,5 @@
 import pygame
+import upgrade
 import os
 
 pygame.font.init()
@@ -10,24 +11,24 @@ pygame.display.set_caption('Project Esporta')
 # FONT
 font = pygame.font.Font('freesansbold.ttf', 32)
 
-testX = 10
-testY = 10
+testX = 790
+testY = 500
 
 
 def show_score (x, y):
-    score = font.render('Clicks : %s' % str(total_points), True, (255, 255, 255))
-    screen.blit(score, (x, y))
+    score = font.render('Points : %s' % str(total_points), True, (255, 255, 255))
+    screen.blit(score, (testX, testY))
 
 # Loading images (venv/props/)
-gym_bg = pygame.image.load("gym_background.png")
+gym_bg = pygame.image.load("map.png")
 yoga_mat = pygame.image.load("yoga_mat.png")
 deadlift = pygame.image.load("deadlift.png")
 db_rack = pygame.image.load("db_rack.png")
 bench_press = pygame.image.load("bench_press.png")
 tread_mill = pygame.image.load("tread_mill.png")
 
-# icon = pygame.image.load(IMAGE_NAME)
-# pygame.display.set_icon(icon)
+icon = pygame.image.load("logo.png")
+pygame.display.set_icon(icon)
 
 
 #GLOBAL VARIABLES
@@ -50,9 +51,9 @@ while running:
         clock.tick(60)
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == timer_event:
-            total_points += 1
-            print(str(total_points))
+        #elif event.type == timer_event:
+            #total_points += 1
+            #print(str(total_points))
         elif event.type == pygame.MOUSEBUTTONDOWN:
             total_points += 1
             print(total_points)
