@@ -11,7 +11,7 @@ pygame.display.set_caption('Project Esporta')
 # FONT
 font = pygame.font.Font('freesansbold.ttf', 32)
 
-testX = 790
+testX = 750
 testY = 500
 
 
@@ -51,9 +51,8 @@ while running:
         clock.tick(60)
         if event.type == pygame.QUIT:
             running = False
-        #elif event.type == timer_event:
-            #total_points += 1
-            #print(str(total_points))
+        elif event.type == timer_event:
+            total_points += upgrade.upgradeMultiply()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             total_points += 1
             print(total_points)
