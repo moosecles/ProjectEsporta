@@ -1,7 +1,7 @@
 import pygame
 print('hi')
 background_colour = (255,255,255)
-(width, height) = (300, 200)
+(width, height) = (960, 540)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Project Esporta')
 
