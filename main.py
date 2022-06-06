@@ -42,7 +42,7 @@ player = Player()
 
 def show_score(x, y):
     score = font.render('Points : %s' % str(player.total_points), True, (255, 255, 255))
-    screen.blit(score, (testX, testY))
+    screen.blit(score, (scoreX, scoreY))
 
 # Game Running
 running = True
