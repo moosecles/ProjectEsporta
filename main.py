@@ -21,15 +21,20 @@ tread_mill = pygame.image.load("venv/props/tread_mill.png")
 
 # Game Running
 running = True
+
 while running:
+    pygame.display.update()
+    # Background Image
+    screen.blit(gym_bg, (0, 0))
+
+    pointTimer = pygame.time.Clock()
+    pointTimer.tick(30)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-pointTimer = pygame.time.Clock()
-pointTimer.tick(30)
-
-pygame.display.update()
-# Background Image
-screen.blit(gym_bg, (0, 0))
 pygame.quit()
+
+
+
+
