@@ -10,10 +10,12 @@ pygame.display.flip()
 
 running = True
 while running:
-    print('hi')
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+pointTimer = pygame.time.Clock()
+pointTimer.tick(30)
 
 
 pygame.quit()
