@@ -46,6 +46,7 @@ clock = pygame.time.Clock()
 class Player():
     def __init__(self):
         self.total_points = 0
+        self.multiplier = 3
 
 player = Player()
 
@@ -78,16 +79,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
             if event.button == 1 and area.collidepoint(pos):
-                player.total_points += 1
-
-
-
-
-
-
-
-            if event.button == 1:
-                player.total_points += 1
+                player.total_points += 1 * player.multiplier
 
     show_score(testX, testY)
 pygame.quit()
