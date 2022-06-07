@@ -20,6 +20,7 @@ db_rack = pygame.image.load("props/db_rack.png")
 bench_press = pygame.image.load("props/bench_press.png")
 tread_mill = pygame.image.load("props/tread_mill.png")
 click_sound = mixer.Sound('props/Click.mp3')
+bg_music = mixer.Sound('props/bg_music.mp3')
 
 # GLOBAL VARIABLES
 timer_event = pygame.USEREVENT + 1
@@ -48,12 +49,12 @@ def showScore():
 
 
 
-# Game Running
-
 player = Player()
+bg_music.play()
 
 # Game Running
 running = True
+
 while running:
     pygame.display.update()
     # Background Image
@@ -72,6 +73,7 @@ while running:
             pos = pygame.mouse.get_pos()
             x, y = event.pos  # This is where the mouse is clicked if u want a X Y
 
+            # Detect clicking in our game screen.
             if event.button == 1 and area.collidepoint(pos):
                 click_sound.play()
                 player.add_score()
