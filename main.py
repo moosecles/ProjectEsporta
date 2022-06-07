@@ -2,8 +2,12 @@ import pygame
 from pygame import mixer
 from player import Player
 
+# Initialize Pygame
+
 pygame.font.init()
 pygame.init()
+pygame.mixer.init()
+
 background_colour = (255, 255, 255)
 (width, height) = (960, 540)
 screen = pygame.display.set_mode((width, height))
@@ -20,7 +24,7 @@ db_rack = pygame.image.load("props/db_rack.png")
 bench_press = pygame.image.load("props/bench_press.png")
 tread_mill = pygame.image.load("props/tread_mill.png")
 click_sound = mixer.Sound('props/Click.mp3')
-bg_music = mixer.Sound('props/bg_music.mp3')
+bg_sound = mixer.Sound('props/bg_music2.mp3')
 
 # GLOBAL VARIABLES
 timer_event = pygame.USEREVENT + 1
@@ -41,21 +45,23 @@ def draw():  # MAIN FUNCTION TO PASTE EVERYTHING GUI
 
 
 def showScore():
+
     scoreX = 750
     scoreY = 500
     score = font.render('Points : %s' % str(player.total_points), True, (255, 255, 255))
     screen.blit(score, (scoreX, scoreY))
 
 
-
+bg_sound.play()
+bg_sound.set_volume(.5)
 
 player = Player()
-bg_music.play()
 
 # Game Running
 running = True
 
 while running:
+
     pygame.display.update()
     # Background Image
     screen.blit(gym_bg, (0, 0))
@@ -65,6 +71,7 @@ while running:
 
     for event in pygame.event.get():
         clock.tick(60)
+
         if event.type == pygame.QUIT:
             running = False
         elif event.type == timer_event:
@@ -84,4 +91,5 @@ while running:
                     player.punching_bag += 1
                     player.total_points -= 100
     showScore()
+
 pygame.quit()
