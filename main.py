@@ -51,9 +51,14 @@ def showScore():
     score = font.render('Points : %s' % str(player.total_points), True, (255, 255, 255))
     screen.blit(score, (scoreX, scoreY))
 
+def button_clicked(x,y):
+    if event.button == 1 and punchingbagMask.get_at((event.pos[0] - x, event.pos[1] - y)):
+        if player.total_points >= 100:  # and the points are more than 100 (which is how much u need to buy one)
+            player.punching_bag += 1
+            player.total_points -= 100
 
-bg_sound.play()
-bg_sound.set_volume(.5)
+bg_sound.play()  #sets background music to run
+bg_sound.set_volume(.01) #sets the volume of said music
 
 player = Player()
 
@@ -69,27 +74,23 @@ while running:
     # Event List
     draw()  # Draws the pngs and stuff onto the screen
 
-    for event in pygame.event.get():
+    for event in pygame.event.get(): #EVENT CHAIN
         clock.tick(60)
-
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT:  #PRESSING X EVENT
             running = False
-        elif event.type == timer_event:
+
+        elif event.type == timer_event: #UPGRADE EVENT TIMER
             player.total_points += player.upgrade_multiplier()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:  #MOUSE BUTTON IS CLICKED EVENT
             pos = pygame.mouse.get_pos()
             x, y = event.pos  # This is where the mouse is clicked if u want a X Y
-
             # Detect clicking in our game screen.
-            if event.button == 1 and area.collidepoint(pos):
+            if event.button == 1 and area.collidepoint(pos): #CLICK ON GYM AREA EVENT
                 click_sound.play()
                 player.add_score()
-            elif event.button == 1 and punchingbagMask.get_at(
-                    (event.pos[0] - x, event.pos[1] - y)):  # If it is at the punching bag png location
-
-                if player.total_points >= 100:  # and the points are more than 100 (which is how much u need to buy one)
-                    player.punching_bag += 1
-                    player.total_points -= 100
+            else:
+                button_clicked(x, y)
     showScore()
 
 pygame.quit()
