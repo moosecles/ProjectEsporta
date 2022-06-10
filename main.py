@@ -14,7 +14,7 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Project Esporta')
 
 # FONT
-font = pygame.font.Font('freesansbold.ttf', 32)
+font = pygame.font.Font('freesansbold.ttf', 20)
 
 # Loading images, mp3 (venv/props/)
 gym_bg = pygame.image.load("props/map.png")
@@ -23,6 +23,12 @@ deadlift = pygame.image.load("props/deadlift.png")
 db_rack = pygame.image.load("props/db_rack.png")
 bench_press = pygame.image.load("props/bench_press.png")
 tread_mill = pygame.image.load("props/tread_mill.png")
+db_button = pygame.image.load("props/db_button.png")
+ddl_button = pygame.image.load("props/ddl_button.png")
+pb_button = pygame.image.load("props/pb_button.png")
+treadmill_button = pygame.image.load("props/treadmill_button.png")
+bench_button = pygame.image.load("props/bench_button.png")
+
 click_sound = mixer.Sound('props/Click.mp3')
 bg_sound = mixer.Sound('props/bg_music2.mp3')
 
@@ -31,13 +37,24 @@ timer_event = pygame.USEREVENT + 1
 pygame.time.set_timer(timer_event, 1000)  # (do this, every this milliseconds)
 clock = pygame.time.Clock()
 area = pygame.Rect(100, 150, 200, 124)
-punchingbagMask = pygame.mask.from_surface(punching_bag)  # Mask = where the punching bag png is
-
+punchingbag_mask = pygame.mask.from_surface(pb_button)  # Mask = where the punching bag png is
+treadmill_mask = pygame.mask.from_surface(treadmill_button)
+db_mask = pygame.mask.from_surface(db_button)
+bench_mask = pygame.mask.from_surface(bench_button)
+ddl_mask = pygame.mask.from_surface(ddl_button)
 
 def draw():  # MAIN FUNCTION TO PASTE EVERYTHING GUI
     # UPGRADE BUTTONS
-    punchingBagX, punchingBagY = 850, 60
-    screen.blit(punching_bag, (punchingBagX, punchingBagY))
+    punchingbag_X, punchingbag_Y = 815, 60
+    treadmill_X, treadmill_Y = 815, 80
+    db_X, db_Y = 815, 100
+    bench_X, bench_Y = 815, 120
+    ddl_X, ddl_Y = 815, 140
+    screen.blit(pb_button, (punchingbag_X, punchingbag_Y))
+    screen.blit(treadmill_button, (treadmill_X, treadmill_Y))
+    screen.blit(db_button, (db_X, db_Y))
+    screen.blit(bench_button, (bench_X, bench_Y))
+    screen.blit(ddl_button, (ddl_X, ddl_Y))
 
     # SET THE LOGO
     icon = pygame.image.load("props/logo.png")
@@ -46,13 +63,13 @@ def draw():  # MAIN FUNCTION TO PASTE EVERYTHING GUI
 
 def showScore():
 
-    scoreX = 750
+    scoreX = 780
     scoreY = 500
     score = font.render('Points : %s' % str(player.total_points), True, (255, 255, 255))
     screen.blit(score, (scoreX, scoreY))
 
 def button_clicked(x,y):
-    if event.button == 1 and punchingbagMask.get_at((event.pos[0] - x, event.pos[1] - y)):
+    if event.button == 1 and punchingbag_mask.get_at((event.pos[0] - x, event.pos[1] - y)):
         if player.total_points >= 100:  # and the points are more than 100 (which is how much u need to buy one)
             player.punching_bag += 1
             player.total_points -= 100
